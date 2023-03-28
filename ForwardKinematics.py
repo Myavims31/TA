@@ -13,9 +13,9 @@ theta3 = np.pi/4
 theta4 = np.pi/3
 
 # Define transformation matrix for each link
-T1 = np.array([[np.cos(theta1), -np.sin(theta1), 0, a1*np.cos(theta1)],
-               [np.sin(theta1), np.cos(theta1), 0, a1*np.sin(theta1)],
-               [0, 0, 1, 0],
+T1 = np.array([[np.cos(theta1), 0, np.sin(theta1), a1*np.cos(theta1)],
+               [np.sin(theta1), 0, -np.cos(theta1), a1*np.sin(theta1)],
+               [0, 1, 0, d1],
                [0, 0, 0, 1]])
 
 T2 = np.array([[np.cos(theta2), -np.sin(theta2), 0, a2*np.cos(theta2)],
