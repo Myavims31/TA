@@ -1,43 +1,59 @@
 import numpy as np
 
 # Define DH parameters for each link
-a1 = 0
-a2 = 0.13
-a3 = 0.124
-a4 = 0.028
+a1 = 0.012
+a2 = 0.128
+a3 = 0.148
+a4 = 0.126
 d1 = 0.077
-rad1 = input("rad1=")
-theta1 = float(rad1)*(np.pi/4)
-theta2 = np.pi/3
-theta3 = np.pi/4
-theta4 = np.pi/3
+d2 = 0
+d3 = 0
+d4 = 0
+rad1 = float(input("rad1="))
+rad2 = float(input("rad2="))
+rad3 = float(input("rad3="))
+rad4 = float(input("rad4="))
+theta1 = rad1 #*(180/np.pi)
+theta2 = rad2 + np.deg2rad(90)
+theta3 = rad3 - np.deg2rad(90)
+# theta2 = rad2-((np.pi/180)*11)#*(180/np.pi)
+# theta3 = rad3+((np.pi/180)*11) #*(180/np.pi)
+theta4 = rad4 #*(180/np.pi)
+alpha1 = np.pi/2
+alpha2 = alpha3 = alpha4 = 0
 
 # Define transformation matrix for each link
-T1 = np.array([[np.cos(theta1), 0, np.sin(theta1), a1*np.cos(theta1)],
-               [np.sin(theta1), 0, -np.cos(theta1), a1*np.sin(theta1)],
-               [0, 1, 0, d1],
+T1 = np.array([[np.cos(theta1), -np.sin(theta1)*np.cos(alpha1), np.sin(theta1)*np.sin(alpha1), a1*np.cos(theta1)],
+               [np.sin(theta1), np.cos(theta1)*np.cos(alpha1), -np.cos(theta1)*np.sin(alpha1), a1*np.sin(theta1)],
+               [0, np.sin(alpha1), np.cos(alpha1), d1],
                [0, 0, 0, 1]])
 
-T2 = np.array([[np.cos(theta2), -np.sin(theta2), 0, a2*np.cos(theta2)],
-               [np.sin(theta2), np.cos(theta2), 0, a2*np.sin(theta2)],
-               [0, 0, 1, 0],
+T2 = np.array([[np.cos(theta2), -np.sin(theta2)*np.cos(alpha2), np.sin(theta2)*np.sin(alpha2), a2*np.cos(theta2)],
+               [np.sin(theta2), np.cos(theta2)*np.cos(alpha2), -np.cos(theta2)*np.sin(alpha2), a2*np.sin(theta2)],
+               [0, np.sin(alpha2), np.cos(alpha2), d2],
                [0, 0, 0, 1]])
 
-T3 = np.array([[np.cos(theta3), -np.sin(theta3), 0, a3*np.cos(theta3)],
-               [np.sin(theta3), np.cos(theta3), 0, a3*np.sin(theta3)],
-               [0, 0, 1, 0],
+T3 = np.array([[np.cos(theta3), -np.sin(theta3)*np.cos(alpha3), np.sin(theta3)*np.sin(alpha3), a3*np.cos(theta3)],
+               [np.sin(theta3), np.cos(theta3)*np.cos(alpha3), -np.cos(theta3)*np.sin(alpha3), a3*np.sin(theta3)],
+               [0, np.sin(alpha3), np.cos(alpha3), d3],
                [0, 0, 0, 1]])
 
-T4 = np.array([[np.cos(theta4), -np.sin(theta4), 0, a4*np.cos(theta4)],
-               [np.sin(theta4), np.cos(theta4), 0, a4*np.sin(theta4)],
-               [0, 0, 1, 0],
+T4 = np.array([[np.cos(theta4), -np.sin(theta4)*np.cos(alpha4), np.sin(theta4)*np.sin(alpha4), a4*np.cos(theta4)],
+               [np.sin(theta4), np.cos(theta4)*np.cos(alpha4), -np.cos(theta4)*np.sin(alpha4), a4*np.sin(theta4)],
+               [0, np.sin(alpha4), np.cos(alpha4), d4],
                [0, 0, 0, 1]])
 
 # Compute overall transformation matrix from base to end effector
-T = np.dot(np.dot(T1, T2),np.dot(T3, T4))
+T = np.matmul(np.matmul(T1, T2),np.matmul(T3, T4))
 # Extract position and orientation of end effector
 position = T[:3, 3]
+position[0] = round(float(position[0]),3)
+position[1] = round(float(position[1]),3)
+position[2] = round(float(position[2]),3)
+
 orientation = T[:3, :3]
+
+# print(T)
 
 print("Position:", position)
 print("Orientation:", orientation)
