@@ -1,4 +1,5 @@
 import numpy as np
+import math
 
 # Define DH parameters for each link
 a1 = 0.012
@@ -53,7 +54,30 @@ position[2] = round(float(position[2]),3)
 
 orientation = T[:3, :3]
 
+def rotation_matrix_to_euler_angles(R):
+    # Menghitung roll (rotasi sepanjang sumbu X)
+    roll = math.atan2(R[2][1], R[2][2])
+
+    # Menghitung pitch (rotasi sepanjang sumbu Y)
+    pitch = math.atan2(-R[2][0], math.sqrt(R[2][1]**2 + R[2][2]**2))
+
+    # Menghitung yaw (rotasi sepanjang sumbu Z)
+    yaw = math.atan2(R[1][0], R[0][0])
+
+    # Mengonversi sudut dari radian menjadi derajat
+    roll_deg = math.degrees(roll)
+    pitch_deg = math.degrees(pitch)
+    yaw_deg = math.degrees(yaw)
+
+    return roll_deg, pitch_deg, yaw_deg
+
+# Contoh penggunaan
+rotation_matrix = T[:3, :3]
+
+roll, pitch, yaw = rotation_matrix_to_euler_angles(rotation_matrix)
+
 # print(T)
 
-print("Position:", position)
-print("Orientation:", orientation)
+print("Position:\n", position)
+print("Orientation:\n", orientation)
+print("OrientationEuler:\n", [roll, pitch, yaw])
