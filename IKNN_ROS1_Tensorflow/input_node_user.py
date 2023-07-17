@@ -31,7 +31,7 @@ def input_node():
     loaded_model = tf.keras.models.load_model("ModelNN.h5", custom_objects={"lms": lms })
 
 
-    pub = rospy.Publisher('pos_robot', Float32MultiArray, queue_size=10)
+    #pub = rospy.Publisher('pos_robot', Float32MultiArray, queue_size=10)
     rospy.init_node('input_node', anonymous=True)
     rate = rospy.Rate(10) # 10hz
 
