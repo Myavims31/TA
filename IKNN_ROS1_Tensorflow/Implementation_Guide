@@ -25,9 +25,8 @@ Real Plant:
 
 Membuat Model Neural Network:
 1. Buka program NN.ipynb pada IDE apapun (saran VScode atau google colab)
-2. Arsitektur dan Parameter Neural Network dapat di custom sesuai keperluan
-3. masukan nama file dataset dalam format .csv ke bagian #Dataset
-4. run seluruh program untuk melakukan training dan testing sehingga mendapatkan model NN dengan format nama "ModelNN.h5"
+2. Arsitektur dan Parameter Neural Network dapat dicustom sesuai keperluan
+3. run seluruh program untuk melakukan training dan testing sehingga mendapatkan model NN dengan format nama "ModelNN.h5"
 
 Demo Real Plant:
 1. Pastikan wiring Robot sudah connect
