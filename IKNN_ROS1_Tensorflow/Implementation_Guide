@@ -1,0 +1,37 @@
+Langkah-langkah Implementasi Kinematika Balik Robot Open Manipulator-X dengan Neural Network
+
+Setup Keseluruhan :
+1. Download dan Install ROS 1 dan environment yang diperlukan dari ROBOTIS e-Manual ( https://emanual.robotis.com/docs/en/platform/openmanipulator_x/overview/ )
+2. Download dan Install library Tensor Flow dan environmet yang diperlukan untuk neural network
+3. Tempatkan semua program pada github ini dalam 1 folder yang sama di dalam folder catkin_ws/ src
+
+Ambil Dataset
+Gazebo:
+1. launch gazebo, controller, dan GUI sesuai pada e-Manual
+2. masuk ke folder yang berisi read_sensors.cpp pada terminal
+3. dan running program read_sensors.cpp pada terminal
+4. masukan input nilai joint pada GUI
+5. program berjalan dan mengeluarkan dataset dengan urutan joint_1, joint_2, joint_3, joint_4, pos_x, pos_y, pos_z, orient_x, orient_y, orient_z, orient_w, roll, pitch, yaw
+6. copy seluruh data dan pindahkan dalam note lalu save dengan format .csv
+
+Real Plant:
+1. Pastikan seluruh hardware sudah terkoneksisesuai poin 4 e-manual
+2. launch controller, dan GUI sesuai pada e-Manual
+3. masuk ke folder yang berisi read_sensors_plant.cpp pada terminal
+4. dan running program read_sensors_plant.cpp pada terminal
+5. masukan input nilai joint pada GUI
+6. program berjalan dan mengeluarkan dataset dengan urutan joint_1, joint_2, joint_3, joint_4, pos_x, pos_y, pos_z, orient_x, orient_y, orient_z, orient_w, roll, pitch, yaw
+7. copy seluruh data dan pindahkan dalam note lalu save dengan format .csv
+
+Membuat Model Neural Network:
+1. Buka program NN.ipynb pada IDE apapun (saran VScode atau google colab)
+2. Arsitektur dan Parameter Neural Network dapat di custom sesuai keperluan
+3. masukan nama file dataset dalam format .csv ke bagian #Dataset
+4. run seluruh program untuk melakukan training dan testing sehingga mendapatkan model NN dengan format nama "ModelNN.h5"
+
+Demo Real Plant:
+1. Pastikan wiring Robot sudah connect
+2. Masuk ke dalam folder yang sudah anda buat
+3. Launch Open Manipulator X controller dan pastikan controller telah connect dengan robot
+4. run program python3 input_node_user.py
+5.  Masukan Nilai posisi (x, y, z) dan orientasi (roll, pitch, yaw)
