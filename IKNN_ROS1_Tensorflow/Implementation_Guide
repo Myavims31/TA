@@ -12,7 +12,7 @@ Gazebo:
 3. dan running program read_sensors.cpp pada terminal
 4. masukan input nilai joint pada GUI
 5. program berjalan dan mengeluarkan dataset dengan urutan joint_1, joint_2, joint_3, joint_4, pos_x, pos_y, pos_z, orient_x, orient_y, orient_z, orient_w, roll, pitch, yaw
-6. copy seluruh data dan pindahkan dalam note lalu save dengan format .csv
+6. copy seluruh data dan pindahkan dalam note lalu save dengan format nama "J1_Atas Bawah.csv"
 
 Real Plant:
 1. Pastikan seluruh hardware sudah terkoneksisesuai poin 4 e-manual
@@ -21,7 +21,7 @@ Real Plant:
 4. dan running program read_sensors_plant.cpp pada terminal
 5. masukan input nilai joint pada GUI
 6. program berjalan dan mengeluarkan dataset dengan urutan joint_1, joint_2, joint_3, joint_4, pos_x, pos_y, pos_z, orient_x, orient_y, orient_z, orient_w, roll, pitch, yaw
-7. copy seluruh data dan pindahkan dalam note lalu save dengan format .csv
+7. copy seluruh data dan pindahkan dalam note lalu save dengan format nama "J1_Atas Bawah.csv"
 
 Membuat Model Neural Network:
 1. Buka program NN.ipynb pada IDE apapun (saran VScode atau google colab)
